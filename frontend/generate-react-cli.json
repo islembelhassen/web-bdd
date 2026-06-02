@@ -1,0 +1,14 @@
+{
+  "usesTypeScript": false,
+  "usesStyledComponents": true,
+  "testLibrary": "Vitest",
+  "component": {
+    "default": {
+      "path": "src",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false
+    }
+  }
+}

@@ -1,0 +1,31 @@
+# ── Secrets ───────────────────────────────
+.env
+*.env.local
+*.env.production
+
+# ── Dépendances Node ──────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── Build React (Vite) ────────────────────
+dist/
+dist-ssr/
+build/
+
+# ── Cache Vite ────────────────────────────
+.vite/
+*.local
+
+# ── Éditeurs ──────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── PHP ───────────────────────────────────
+*.log
+/vendor/
