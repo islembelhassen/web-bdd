@@ -2,21 +2,32 @@ import { useEffect, useState } from "react";
 import "./ListData.css";
 
 export default function ListData() {
-  const [activeTable, setActiveTable] = useState("Film");
+  const [activeTable, setActiveTable] = useState("movie");
   const [allData, setAllData] = useState({
-    Film: [],
-    Personne: [],
-    f_role: []
+    movie: [],
+    link: [],
+    genre: [],
+    movie_genre: [],
+    utilisateur: [],
+    profil: [],
+    rating: [],
+    tag: [],
+    movie_tag: []
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const tables = [
-    { name: "Film", columns: ["fid", "titre", "an", "duree", "rang"] },
-    { name: "Personne", columns: ["pid", "nom", "prenom"] },
-    { name: "f_role", columns: ["fid", "pid", "nom"] },
-    { name: "mes", columns: ["fid", "pid",] }
-  ];
+const tables = [
+    { name: "movie", columns: ["id_movie", "title", "year"] },
+    { name: "link", columns: ["id_movie", "imdb_id", "tmdb_id"] },
+    { name: "genre", columns: ["id_genre", "libelle"] },
+    { name: "movie_genre", columns: ["id_movie", "id_genre"] },
+    { name: "utilisateur", columns: ["id_user", "date_premiere_note", "date_derniere_note"] },
+    { name: "profil", columns: ["id_profil", "id_user", "nb_films_vus", "note_moyenne"] },
+    { name: "rating", columns: ["id_user", "id_movie", "rating", "rated_at"] },
+    { name: "tag", columns: ["id_tag", "libelle"] },
+    { name: "movie_tag", columns: ["id_user", "id_movie", "id_tag", "tagged_at"] }
+];
 
   const fetchAllData = async () => {
     setLoading(true);

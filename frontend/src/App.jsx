@@ -6,7 +6,7 @@ import Statistiques from "./components/Statistiques/Statistiques";
 import "./style.css";
 
 function App() {
-  const [activePage, setActivePage] = useState("livres"); // 'livres' ou 'sql'
+  const [activePage, setActivePage] = useState("movie"); 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -33,7 +33,7 @@ function App() {
 
       {/* Contenu principal */}
       <main className={`main-content ${isSidebarOpen ? 'shifted' : ''}`}>
-        {activePage === "livres" && <ListData />}
+        {activePage === "movie" && <ListData />}
         {activePage === "sql" && <SQLAssistant />}
         {activePage === "statistiques" && <Statistiques />}
       </main>

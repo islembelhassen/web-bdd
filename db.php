@@ -1,10 +1,12 @@
 <?php
+require_once 'env.php';
 loadEnv();
 
-$host = $_ENV['DB_HOST'];
-$dbname = $_ENV['DB_NAME'];
-$user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASS'];
+
+$host = $_ENV['host'];
+$dbname = $_ENV['dbname'];
+$user = $_ENV['user'];
+$pass = $_ENV['pass'];
 
 try {
     $pdo = new PDO(

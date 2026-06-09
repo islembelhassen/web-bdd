@@ -5,6 +5,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Content-Type: application/json');
 
 require_once 'db.php';
+require_once 'env.php';
 loadEnv();
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -12,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// ── Lecture du prompt ──────────────────────────────────────────────────────
 $input      = json_decode(file_get_contents('php://input'), true);
 $userPrompt = $input['prompt'] ?? $_POST['prompt'] ?? '';
 
@@ -26,10 +26,15 @@ $API_KEY = $_ENV['GROQ_API_KEY'];
 $API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
 $database_schema = "
-Table: Film     (fid, titre, an, duree, rang,  PRIMARY KEY (fid))
-Table: Personne (pid, nom, prenom,               PRIMARY KEY (pid))
-Table: f_role   (fid REFERENCES Film(fid), pid REFERENCES Personne(pid), nom, PRIMARY KEY (fid, pid, nom))
-Table: mes      (fid REFERENCES Film(fid), pid REFERENCES Personne(pid),       PRIMARY KEY (fid, pid))
+Table: movie        (id_movie, title, year,                                                  PRIMARY KEY (id_movie))
+Table: link         (id_movie REFERENCES movie(id_movie), imdb_id, tmdb_id,                 PRIMARY KEY (id_movie))
+Table: genre        (id_genre, libelle,                                                      PRIMARY KEY (id_genre))
+Table: movie_genre  (id_movie REFERENCES movie(id_movie), id_genre REFERENCES genre(id_genre), PRIMARY KEY (id_movie, id_genre))
+Table: utilisateur  (id_user, date_premiere_note, date_derniere_note,                        PRIMARY KEY (id_user))
+Table: profil       (id_profil, id_user REFERENCES utilisateur(id_user), nb_films_vus, note_moyenne, PRIMARY KEY (id_profil))
+Table: rating       (id_user REFERENCES utilisateur(id_user), id_movie REFERENCES movie(id_movie), rating, rated_at, PRIMARY KEY (id_user, id_movie))
+Table: tag          (id_tag, libelle,                                                        PRIMARY KEY (id_tag))
+Table: movie_tag    (id_user REFERENCES utilisateur(id_user), id_movie REFERENCES movie(id_movie), id_tag REFERENCES tag(id_tag), tagged_at, PRIMARY KEY (id_user, id_movie, id_tag))
 ";
 
 $payload = [
