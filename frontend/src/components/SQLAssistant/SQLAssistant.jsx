@@ -16,7 +16,7 @@ const SQLAssistant = () => {
     setSqlQuery('');
 
     try {
-      const response = await fetch('http://localhost/react-php/api.php', {
+      const response = await fetch('http://localhost/web-bdd/api.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

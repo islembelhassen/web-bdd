@@ -34,7 +34,7 @@ const tables = [
     setError("");
 
     try {
-      const response = await fetch("http://localhost/react-php/getData.php");
+      const response = await fetch("http://localhost/web-bdd/getData.php");
       if (!response.ok) throw new Error("Erreur réseau");
       const result = await response.json();
       
