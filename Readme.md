@@ -18,7 +18,7 @@ Pose une question en français, l'IA génère le SQL, l'exécute et affiche un g
 ### 1. Cloner le projet
 
 ```bash
-git clone git@github.com:islembelhassen/web-bdd.git
+git clone https://github.com/islembelhassen/web-bdd.git
 cd 
 ```
 
