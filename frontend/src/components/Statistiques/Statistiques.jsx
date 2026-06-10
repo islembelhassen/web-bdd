@@ -4,7 +4,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from "recharts";
 
-const API_URL = "http://localhost/react-php/api_chart.php";
+const API_URL = "http://localhost/web-bdd/api_chart.php";
 
 const PALETTE = ["#667eea", "#764ba2", "#f093fb", "#4facfe", "#43e97b",
                  "#fa709a", "#fee140", "#a18cd1", "#fbc2eb", "#96fbc4"];
