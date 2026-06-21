@@ -173,7 +173,7 @@ Jointures multi-tables, schéma rigide, scalabilité horizontale limitée, calcu
 
 ---
 
-## 7. Architecture polyglotte
+## Architecture polyglotte
 
 - **MongoDB** : fiches films et profils
 - **Neo4j** : graphe de similarité utilisateurs
