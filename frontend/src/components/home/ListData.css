@@ -254,3 +254,103 @@
     font-size: 12px;
   }
 }
+
+
+
+
+
+
+
+/* ── Ajouter ces règles à ton ListData.css existant ── */
+
+/* Barre de recherche */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  color: #212529;
+}
+
+.search-bar input::placeholder {
+  color: #adb5bd;
+}
+
+.search-icon {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #868e96;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.search-clear:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.search-count {
+  font-size: 12px;
+  color: #868e96;
+  white-space: nowrap;
+}
+
+/* Conteneur virtualisé */
+.virtual-scroll-container {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow-y: auto;
+}
+
+.virtual-scroll-container .data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.virtual-scroll-container thead th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.virtual-scroll-container tbody td {
+  height: 40px;
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* Message vide */
+.empty-data {
+  text-align: center;
+  padding: 40px;
+  color: #868e96;
+  font-size: 14px;
+}
