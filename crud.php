@@ -11,24 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 require_once 'db.php'; // fournit $pdo
 
-/**
- * SÉCURITÉ CONTRE LES INJECTIONS SQL — deux mécanismes complémentaires :
- *
- * 1) VALIDATION DES DONNÉES (validateData ci-dessous) : on vérifie le
- *    type, la longueur et les bornes de chaque valeur AVANT de l'utiliser.
- *    Ça protège l'intégrité des données, mais ce n'est PAS la vraie
- *    barrière anti-injection : un attaquant motivé peut soumettre une
- *    chaîne qui "ressemble" à une valeur valide tout en étant malveillante.
- *
- * 2) REQUÊTES PRÉPARÉES PDO (partout ci-dessous) : chaque valeur est
- *    envoyée à MySQL via un paramètre lié (?), jamais concaténée dans
- *    le texte SQL. C'est ÇA qui empêche réellement l'injection, quoi
- *    que contienne la donnée.
- *
- * Les noms de TABLE et de COLONNE ne peuvent jamais être des paramètres
- * liés en SQL (PDO ne le permet pas) : ils sont donc validés contre une
- * liste blanche stricte ($TABLES) avant d'être insérés dans la requête.
- */
 
 function respond($payload, int $code = 200): void {
     http_response_code($code);

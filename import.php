@@ -4,17 +4,6 @@
  * -----------------------------------------------------------------
  * Importe les CSV MovieLens (movies.csv, links.csv, ratings.csv, tags.csv)
  * directement dans la base filmsbdd, sans passer par des tables temporaires.
- *
- * UTILISATION :
- * 1. Place ce fichier dans le même dossier que db.php / env.php / .env
- * 2. Place les 4 fichiers CSV dans un sous-dossier "ml-latest-small/"
- *    (ou change $csvDir ci-dessous pour pointer vers le bon chemin)
- * 3. Lance dans le navigateur : http://localhost/web-bdd/import.php
- *    (ou en CLI : php import.php — plus fiable, pas de timeout navigateur)
- *
- * Si tu relances le script plusieurs fois, mets $TRUNCATE_BEFORE_IMPORT
- * à true pour repartir d'une base propre (sinon les doublons sont
- * simplement ignorés grâce à INSERT IGNORE / clés primaires).
  * -----------------------------------------------------------------
  */
 
