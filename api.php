@@ -13,7 +13,7 @@ require_once 'env.php';
 
 loadEnv();
 
-// ✅ Lit JSON ou FormData automatiquement
+// Lit JSON ou FormData automatiquement
 $input = json_decode(file_get_contents('php://input'), true);
 $userPrompt = $input['prompt'] ?? $_POST['prompt'] ?? '';
 
@@ -23,7 +23,7 @@ if (empty($userPrompt)) {
 }
 
 $API_KEY = $_ENV['GROQ_API_KEY'];
-$API_URL = "https://api.groq.com/openai/v1/chat/completions"; // ✅ endpoint complet
+$API_URL = "https://api.groq.com/openai/v1/chat/completions"; // endpoint complet
 
 $database_schema = "
 Table: movie        (id_movie, title, year,                                                  PRIMARY KEY (id_movie))
@@ -38,7 +38,7 @@ Table: movie_tag    (id_user REFERENCES utilisateur(id_user), id_movie REFERENCE
 ";
 
 $payload = [
-    "model" => "llama-3.3-70b-versatile", // ✅ modèle Groq gratuit et puissant
+    "model" => "llama-3.3-70b-versatile", // modèle Groq gratuit et puissant
     "messages" => [
         [
             "role" => "system",
@@ -77,7 +77,7 @@ if ($httpCode === 200) {
     
     $sql = trim($data['choices'][0]['message']['content']);
 
-    // Nettoyer les éventuelles balises ```sql ... ```
+    // Nettoyer les éventuelles balises ```sql ...```
     $sql = preg_replace('/^```sql\s*/i', '', $sql);
     $sql = preg_replace('/\s*```$/', '', $sql);
 
