@@ -122,9 +122,18 @@ cp *.php /chemin/vers/htdocs/react-php/
 
 ## Sécurité
 
-- Seules les requêtes `SELECT` sont autorisées
-- Les mots-clés `DROP`, `DELETE`, `INSERT`, `UPDATE`, `ALTER`, `TRUNCATE` sont bloqués
+- Seules les requêtes `SELECT` sont autorisées dans `api_chart.php`
+- Les mots-clés `DROP`, `DELETE`, `INSERT`, `UPDATE`, `ALTER`, `TRUNCATE` sont bloqués côté assistant SQL
 - La clé API n'est jamais exposée côté frontend
+
+### Protection contre les injections SQL (Crud.php)
+
+`Crud.php` (insert / update / delete sur les tables de la base) repose sur deux mécanismes complémentaires :
+
+1. **Validation des données** : chaque valeur soumise est vérifiée (type, longueur, bornes) avant d'être utilisée. Ça protège l'intégrité des données, mais ce n'est pas la vraie barrière anti-injection — une chaîne peut très bien passer la validation tout en étant malveillante.
+2. **Requêtes préparées PDO** : chaque valeur est envoyée à MySQL via un paramètre lié (`?`), jamais concaténée dans le texte SQL. C'est ce mécanisme qui empêche réellement l'injection, quoi que contienne la donnée.
+
+Les noms de table et de colonne ne peuvent jamais être des paramètres liés en SQL (PDO ne le permet pas) : ils sont donc validés contre une liste blanche stricte (`$TABLES` dans `Crud.php`) avant d'être insérés dans la requête.
 
 ---
 
